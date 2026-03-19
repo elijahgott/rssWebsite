@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 
+app.use(express.json())
+
 const RssParser = require('rss-parser')
 const rssParser = new RssParser
 
@@ -54,9 +56,11 @@ rssFeedsList.forEach(async item => {
     await getFeedItems(item.url)
 })
 
-// display data in items
-setTimeout(() => {
-    console.log(items)
-}, 200)
+// ------- API -------
+
+// get all articles
+app.get('/api/articles', async (req, res) => {
+    res.json(items)
+})
 
 module.exports = app

@@ -2,5 +2,8 @@
   "dependencies": {
     "express": "^5.2.1",
     "rss-parser": "^3.13.0"
+  },
+   "scripts": {
+    "dev": "node --watch index.js"
   }
 }
