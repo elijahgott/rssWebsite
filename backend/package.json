@@ -1,9 +1,10 @@
 {
   "dependencies": {
+    "cors": "^2.8.6",
     "express": "^5.2.1",
     "rss-parser": "^3.13.0"
   },
-   "scripts": {
+  "scripts": {
     "dev": "node --watch index.js"
   }
 }
