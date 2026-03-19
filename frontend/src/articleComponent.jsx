@@ -1,9 +1,12 @@
+const getDate = (timestamp) => {
+    return new Date(timestamp).toLocaleDateString()
+}
+
 const Article = ({article}) => {
     return(
-        <div>
-            <h1><a href={article.url}>{article.title}</a></h1>
-            <p>{article.author}</p>
-            <p>{article.published}</p>
+        <div className="item">
+            <h2 className="articleTitle"><a href={article.url} target="_blank">{article.title}</a></h2>
+            <p className="articleInfo">by {article.author} - {getDate(article.published)}</p>
             <p>{article.content}</p>
         </div>
     )

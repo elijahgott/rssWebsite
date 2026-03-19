@@ -1,8 +1,75 @@
 *{
+  /* green color pallet */
+  --dust-grey: rgb(218,215,205);
+  --dry-sage: rgb(163,177,138);
+  --fern: rgb(88,129,87);
+  --hunter-green: rgb(58,90,64);
+  --pine-teal: rgb(52,78,65);
+
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 
   font-family: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
   font-weight: normal;
+
+  --top-bottom-margins: min(2%, 200px);
+  --side-margins: min(5%, 200px);
+}
+
+html{
+  margin-top: var(--top-bottom-margins);
+  margin-bottom: var(--top-bottom-margins);
+  margin-left: var(--side-margins);
+  margin-right: var(--side-margins);
+
+  background-color: var(--dry-sage);
+}
+
+.title{
+  text-align: center;
+  
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+
+  color: var(--pine-teal);
+  font-size: 3rem;
+  font-weight: 700;
+  text-shadow: 4px 4px var(--dust-grey);
+}
+
+.item{
+  border: 4px solid var(--pine-teal);
+  border-radius: 24px;
+  background-color: var(--dust-grey);
+
+  box-shadow: 4px 4px var(--fern);
+
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.articleTitle > a{
+  color: var(--hunter-green);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.articleTitle > a:hover{
+  color: var(--pine-teal);
+  text-decoration: underline;
+}
+
+.articleTitle > a:visited{
+  color: var(--dry-sage);
+}
+
+.articleInfo{
+  margin-left: 0.5rem;
+  padding-bottom: 0.5rem;
 }

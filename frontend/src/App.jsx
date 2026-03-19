@@ -8,7 +8,23 @@ import './App.css'
 import Article from './articleComponent'
 
 function App() {
-  const [data, setData] = useState([])
+  const [data, setData] = useState([
+    // test data
+    {
+      title: 'article name',
+      author: 'author',
+      url: 'https://elijahgott.github.io',
+      published: '3-19-2026',
+      content: 'hey all scott here',
+    },
+    {
+      title: 'article 2 name',
+      author: 'author 2',
+      url: 'https://elijahgott.github.io',
+      published: '3-18-2026',
+      content: 'hey all scott here again',
+    }
+  ])
 
   useEffect(() => {
     // fetch items from backend
@@ -26,15 +42,15 @@ function App() {
 
   return (
     <>
-      <h1>RSS Feed</h1>
+      <h1 className='title'>Feed</h1>
 
-      <div>
+      <>
         {data.length === 0 ? (
           <h2>Nothing here...</h2>
         ) : (
           data.map((item, index) => <Article article={item} key={index}/>)
         )}
-      </div>
+      </>
     </>
   )
 }

@@ -35,16 +35,22 @@ const items = []
 
 // gets feed data from rss
 // includes items (articles), feed title, feed url, etc
+
+// need to format the dates,
+// then sort data (in frontend) by date
+// so newest articles are shown first
 const getFeedItems = async (url) => {
     const feed = await rssParser.parseURL(url)
 
     if(feed){
         feed.items.forEach(item => {
+            const timestamp = new Date(item.pubDate || item.published || item.isoDate).getTime()
+
             normalizedObj = {
                 title: item.title,
                 author: item.author || item.creator || "N/A",
                 url: item.link,
-                published: item.pubDate, // may need to format this differently
+                published: timestamp,
                 content: item.content || '',
             }
             items.push(normalizedObj)
@@ -62,7 +68,7 @@ rssFeedsList.forEach(async item => {
 
 // get all articles
 app.get('/api/articles', async (req, res) => {
-    res.json(items)
+    res.json(items.sort((a, b) => b.timestamp - a.timestamp))
 })
 
 module.exports = app
