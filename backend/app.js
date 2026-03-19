@@ -25,7 +25,8 @@ const itemObj = {
     // maybe more?
 }
 
-
+// holds each article / item
+// fetched from rss feeds
 const items = []
 
 // gets feed data from rss
