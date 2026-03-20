@@ -28,7 +28,7 @@ html{
 
 .title{
   text-align: center;
-  
+
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 
@@ -70,6 +70,17 @@ html{
 }
 
 .articleInfo{
+  display: flex;
   margin-left: 0.5rem;
   padding-bottom: 0.5rem;
+}
+
+.articleInfo > .authorName{
+  font-weight: bold;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.articleInfo > .publishedDate{
+  color: rgb(75, 75, 75);
 }

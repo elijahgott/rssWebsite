@@ -10,7 +10,7 @@ const rssParser = new RssParser
 
 const rssFeedsList = [
     {
-        title: "ESPN NBA",
+        title: "ESPN - NBA",
         url: "https://www.espn.com/espn/rss/nba/news"
     },
     {
@@ -23,7 +23,9 @@ const rssFeedsList = [
     }
 ]
 
-// ------- API -------
+// ------- API ------- //
+
+// get all sources?
 
 // get all articles
 app.get('/api/articles', async (req, res) => {
