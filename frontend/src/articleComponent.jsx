@@ -15,6 +15,10 @@ const getGenreImage = (genres) => {
         else if(genres.includes('gaming')){
             return '/gameController.png'
         }
+        // after other types of news so specific types are picked first
+        else if(genres.includes('news')){
+            return '/book.png'
+        }
     }
     return null
 }
@@ -30,7 +34,7 @@ const Article = ({article}) => {
                 <p className="authorName">{article.author}</p>
                 <p className="publishedDate">{getDate(article.published)}</p>
             </div>
-            <p>{article.content}</p>
+            <p className="articleContent">{article.content}</p>
         </div>
     )
 }

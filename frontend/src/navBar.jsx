@@ -10,12 +10,14 @@ const getTodaysDate = () => {
 }
 
 const NavBar = () => {
-    const todaysDate = getTodaysDate()
-
     return(
         <nav className="navBar">
             <h1 className="title">Feed</h1>
-            <p className="todaysDate">{getTodaysDate()}</p>
+            <div>
+                <p className="loadedAt">loaded at</p>
+                <p className="todaysDate">{getTodaysDate()}</p>
+            </div>
+            
         </nav>
     )
 }
