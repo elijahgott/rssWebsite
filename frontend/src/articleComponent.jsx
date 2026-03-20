@@ -6,9 +6,25 @@ const getDate = (timestamp) => {
     return dateTime
 }
 
+const getGenreImage = (genres) => {
+    console.log(genres)
+    if(genres){
+        if(genres.includes('sports')){
+            return '/basketball.png'
+        }
+        else if(genres.includes('gaming')){
+            return '/gameController.png'
+        }
+    }
+    return null
+}
+
 const Article = ({article}) => {
+    const image = getGenreImage(article.genres)
+
     return(
         <div className="item">
+            {image !== null ? (<img src={image} className="genreImage" />) : (null)}
             <h2 className="articleTitle"><a href={article.url} target="_blank">{article.title}</a></h2>
             <div className="articleInfo">
                 <p className="authorName">{article.author}</p>

@@ -11,20 +11,20 @@ import Article from './articleComponent'
 function App() {
   const [data, setData] = useState([
     // test data
-    {
-      title: 'article name',
-      author: 'author',
-      url: 'https://elijahgott.github.io',
-      published: '3-19-2026',
-      content: 'hey all scott here',
-    },
-    {
-      title: 'article 2 name',
-      author: 'author 2',
-      url: 'https://elijahgott.github.io',
-      published: '3-18-2026',
-      content: 'hey all scott here again',
-    }
+    // {
+    //   title: 'article name',
+    //   author: 'author',
+    //   url: 'https://elijahgott.github.io',
+    //   published: '3-19-2026',
+    //   content: 'hey all scott here',
+    // },
+    // {
+    //   title: 'article 2 name',
+    //   author: 'author 2',
+    //   url: 'https://elijahgott.github.io',
+    //   published: '3-18-2026',
+    //   content: 'hey all scott here again',
+    // }
   ])
 
   useEffect(() => {

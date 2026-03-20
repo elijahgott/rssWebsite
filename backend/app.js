@@ -27,7 +27,7 @@ const rssFeedsList = [
     {
         title: "YouTube - The Act Man",
         url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCWRvdx9K5uKlnwZaiiWQO3w",
-        genre: ['youtube', 'gaming']
+        genres: ['youtube', 'gaming']
     },
     {
         title: "YouTube - EthosLab",
@@ -80,7 +80,7 @@ app.get('/api/articles', async (req, res) => {
                         url: item.link,
                         published: timestamp,
                         content: item.content || '',
-                        genres: genres
+                        genres: genres || []
                     }
                     items.push(normalizedObj)
                 }
