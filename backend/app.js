@@ -10,6 +10,16 @@ const rssParser = new RssParser
 
 const rssFeedsList = [
     {
+        title: "CNN - World",
+        url: "http://rss.cnn.com/rss/cnn_world.rss",
+        genres: ['news', 'world']
+    },
+    {
+        title: "Fox News - World",
+        url: "https://moxie.foxnews.com/google-publisher/world.xml",
+        genres: ['news', 'world']
+    },
+    {
         title: "ESPN - NBA",
         url: "https://www.espn.com/espn/rss/nba/news",
         genres: ['news', 'sports']
@@ -36,6 +46,14 @@ const rssFeedsList = [
     }
 ]
 
+// return true if published date is within a week of current date
+const isWithinWeek = (timestamp) => {
+    const currentTime = new Date().getTime()
+    const lastWeekTime = currentTime - (1000 * 60 * 60 * 24 * 7)
+
+    return timestamp > lastWeekTime
+}
+
 // ------- API ------- //
 
 // get all sources?
@@ -54,15 +72,18 @@ app.get('/api/articles', async (req, res) => {
             feed.items.forEach(item => {
                 const timestamp = new Date(item.pubDate || item.published || item.isoDate).getTime()
 
-                normalizedObj = {
-                    title: item.title,
-                    author: item.author || item.creator || "N/A",
-                    url: item.link,
-                    published: timestamp,
-                    content: item.content || '',
-                    genres: genres
+                // dont push articles older than a week old
+                if(isWithinWeek(timestamp)){
+                    normalizedObj = {
+                        title: item.title,
+                        author: item.author || item.creator || "N/A",
+                        url: item.link,
+                        published: timestamp,
+                        content: item.content || '',
+                        genres: genres
+                    }
+                    items.push(normalizedObj)
                 }
-                items.push(normalizedObj)
             })
         }
     }
