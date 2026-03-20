@@ -16,59 +16,41 @@ const rssFeedsList = [
     {
         title: "YouTube - The Act Man",
         url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCWRvdx9K5uKlnwZaiiWQO3w"
+    },
+    {
+        title: "New York Times - World",
+        url: "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"
     }
 ]
-
-// template for item object
-const itemObj = {
-    title: "",
-    author: "",
-    url: "",
-    published: "",
-    content: "",
-    // maybe more?
-}
-
-// holds each article / item
-// fetched from rss feeds
-const items = []
-
-// gets feed data from rss
-// includes items (articles), feed title, feed url, etc
-
-// need to format the dates,
-// then sort data (in frontend) by date
-// so newest articles are shown first
-const getFeedItems = async (url) => {
-    const feed = await rssParser.parseURL(url)
-
-    if(feed){
-        feed.items.forEach(item => {
-            const timestamp = new Date(item.pubDate || item.published || item.isoDate).getTime()
-
-            normalizedObj = {
-                title: item.title,
-                author: item.author || item.creator || "N/A",
-                url: item.link,
-                published: timestamp,
-                content: item.content || '',
-            }
-            items.push(normalizedObj)
-        })
-    }
-}
-
-// fetch feed for all rss feeds in list
-rssFeedsList.forEach(async item => {
-    // items.push(await getFeedItems(item.url))
-    await getFeedItems(item.url)
-})
 
 // ------- API -------
 
 // get all articles
 app.get('/api/articles', async (req, res) => {
-    res.json(items.sort((a, b) => b.timestamp - a.timestamp))
+    // holds each article / item
+    // fetched from rss feeds
+    const items = []
+
+    for(const unparsed of rssFeedsList){
+        const feed = await rssParser.parseURL(unparsed.url)
+
+        if(feed){
+            feed.items.forEach(item => {
+                const timestamp = new Date(item.pubDate || item.published || item.isoDate).getTime()
+
+                normalizedObj = {
+                    title: item.title,
+                    author: item.author || item.creator || "N/A",
+                    url: item.link,
+                    published: timestamp,
+                    content: item.content || '',
+                }
+                items.push(normalizedObj)
+            })
+        }
+    }
+
+    res.json(items.sort((a, b) => b.published - a.published))
 })
 
 module.exports = app
