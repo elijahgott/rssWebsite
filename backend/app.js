@@ -11,15 +11,28 @@ const rssParser = new RssParser
 const rssFeedsList = [
     {
         title: "ESPN - NBA",
-        url: "https://www.espn.com/espn/rss/nba/news"
+        url: "https://www.espn.com/espn/rss/nba/news",
+        genres: ['news', 'sports']
     },
     {
         title: "YouTube - The Act Man",
-        url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCWRvdx9K5uKlnwZaiiWQO3w"
+        url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCWRvdx9K5uKlnwZaiiWQO3w",
+        genre: ['youtube', 'gaming']
     },
     {
-        title: "New York Times - World",
-        url: "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"
+        title: "YouTube - EthosLab",
+        url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCFKDEp9si4RmHFWJW1vYsMA",
+        genres: ['youtube', 'gaming']
+    },
+    {
+        title: "YouTube - BdoubleO100",
+        url: "https://www.youtube.com/feeds/videos.xml?channel_id=UClu2e7S8atp6tG2galK9hgg",
+        genres: ['youtube', 'gaming']
+    },
+    {
+        title: "YouTube - Alex Webb",
+        url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCHmDySLF9yQVC1oTwZKWtSQ",
+        genres: ['youtube', 'gaming']
     }
 ]
 
@@ -35,6 +48,7 @@ app.get('/api/articles', async (req, res) => {
 
     for(const unparsed of rssFeedsList){
         const feed = await rssParser.parseURL(unparsed.url)
+        const genres = unparsed.genres
 
         if(feed){
             feed.items.forEach(item => {
@@ -46,6 +60,7 @@ app.get('/api/articles', async (req, res) => {
                     url: item.link,
                     published: timestamp,
                     content: item.content || '',
+                    genres: genres
                 }
                 items.push(normalizedObj)
             })

@@ -5,6 +5,7 @@ const baseUrl = '/api/articles'
 
 import './App.css'
 
+import NavBar from './navBar'
 import Article from './articleComponent'
 
 function App() {
@@ -42,15 +43,15 @@ function App() {
 
   return (
     <>
-      <h1 className='title'>Feed</h1>
+      <NavBar />
 
-      <>
+      <div className="itemsContainer">
         {data.length === 0 ? (
           <h2>Nothing here...</h2>
         ) : (
           data.map((item, index) => <Article article={item} key={index}/>)
         )}
-      </>
+      </div>
     </>
   )
 }
