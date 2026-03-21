@@ -15,6 +15,12 @@ const getGenreImage = (genres) => {
         else if(genres.includes('gaming')){
             return '/gameController.png'
         }
+        else if(genres.includes('right')){
+            return '/elephant.png'
+        }
+        else if(genres.includes('left')){
+            return '/donkey.png'
+        }
         // after other types of news so specific types are picked first
         else if(genres.includes('news')){
             return '/book.png'

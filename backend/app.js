@@ -12,12 +12,12 @@ const rssFeedsList = [
     {
         title: "CNN - World",
         url: "http://rss.cnn.com/rss/cnn_world.rss",
-        genres: ['news', 'world']
+        genres: ['news', 'left', 'world']
     },
     {
         title: "Fox News - World",
         url: "https://moxie.foxnews.com/google-publisher/world.xml",
-        genres: ['news', 'world']
+        genres: ['news', 'right', 'world']
     },
     {
         title: "ESPN - NBA",

@@ -47,7 +47,7 @@ function App() {
 
       <div className="itemsContainer">
         {data.length === 0 ? (
-          <h2>Nothing here...</h2>
+          <h2 className='loadingText'>loading...</h2>
         ) : (
           data.map((item, index) => <Article article={item} key={index}/>)
         )}
