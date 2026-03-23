@@ -7,13 +7,15 @@ const getDate = (timestamp) => {
 }
 
 const getGenreImage = (genres) => {
-    console.log(genres)
     if(genres){
         if(genres.includes('sports')){
             return '/basketball.png'
         }
         else if(genres.includes('gaming')){
             return '/gameController.png'
+        }
+        else if(genres.includes('finance')){
+            return '/money.png'
         }
         else if(genres.includes('right')){
             return '/elephant.png'

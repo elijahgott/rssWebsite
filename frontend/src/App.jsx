@@ -6,6 +6,7 @@ const baseUrl = '/api/articles'
 import './App.css'
 
 import NavBar from './navBar'
+import Filter from './filterComponent'
 import Article from './articleComponent'
 
 function App() {
@@ -26,12 +27,14 @@ function App() {
     //   content: 'hey all scott here again',
     // }
   ])
+  const [genres, setGenres] = useState(['genre', 'genre1'])
 
   useEffect(() => {
     // fetch items from backend
     const getAll = async () => {
       try{
         const res = await axios.get(baseUrl)
+        console.log(res.data)
         setData(res.data)
       }
       catch (e){
@@ -41,9 +44,14 @@ function App() {
     getAll()
   }, [])
 
+  if(data){
+    // get all genres from articles
+  }
+
   return (
     <>
       <NavBar />
+      <Filter genres={genres} />
 
       <div className="itemsContainer">
         {data.length === 0 ? (

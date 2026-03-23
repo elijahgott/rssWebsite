@@ -10,9 +10,14 @@ const rssParser = new RssParser
 
 const rssFeedsList = [
     {
-        title: "CNN - World",
-        url: "http://rss.cnn.com/rss/cnn_world.rss",
-        genres: ['news', 'left', 'world']
+        title: "Yahoo - Finance",
+        url: "https://finance.yahoo.com/news/rssindex",
+        genres: ['news', 'finance']
+    },
+    {
+        title: 'BBC - World',
+        url: 'https://feeds.bbci.co.uk/news/world/rss.xml',
+        genres: ['news', 'left']
     },
     {
         title: "Fox News - World",
@@ -70,6 +75,7 @@ app.get('/api/articles', async (req, res) => {
 
         if(feed){
             feed.items.forEach(item => {
+                console.log(item)
                 const timestamp = new Date(item.pubDate || item.published || item.isoDate).getTime()
 
                 // dont push articles older than a week old
