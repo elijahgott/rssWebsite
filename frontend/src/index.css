@@ -29,6 +29,7 @@ html{
 .navBar{
   max-width: 800px;
   margin: 0 auto;
+  margin-bottom: -1rem;
 
   display: flex;
   align-items:last baseline;
@@ -68,13 +69,55 @@ html{
   margin-top: 2rem;
 }
 
+.filter{
+  width: 100%;;
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+  padding-bottom: 1rem;
+
+  border-bottom: 4px solid var(--fern);
+}
+
+.filterText{
+  color: var(--pine-teal);
+  font-weight: bold;
+}
+
+.filterButton{
+  border: none;
+  padding: 0.75rem;
+  border-radius: 1000px;
+
+  min-width: 50px;
+
+  font-weight: bold;
+  color: var(--hunter-green);
+
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+
+  transition: 0.1s linear;
+}
+
+.filterButton:hover{
+  cursor: pointer;
+}
+
+.filterbutton.active{
+  color: var(--fern);
+}
+
+.filterButton.inactive{
+  opacity: 50%;
+}
+
 .itemsContainer{
   display: flex;
   flex-direction: column;
   align-items: center;
 
   max-width: 800px;
-  min-height: 100dvh;
+  min-height: 50dvh;
   margin: 0 auto;
 
   border: 4px solid var(--pine-teal);
