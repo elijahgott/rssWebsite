@@ -6,13 +6,13 @@ const getTodaysDate = () => {
 
     const time = dateObj.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'})
 
-    return `${month} / ${day} / ${year} ${time}`
+    return `${month}/${day}/${year} ${time}`
 }
 
 const NavBar = () => {
     return(
         <nav className="navBar">
-            <h1 className="title">Feed</h1>
+            <img src="./titleIcon.png" alt="Feed" className="titleIcon" />
             <div>
                 <p className="loadedAt">loaded at</p>
                 <p className="todaysDate">{getTodaysDate()}</p>

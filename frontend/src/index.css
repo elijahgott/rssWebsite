@@ -10,7 +10,7 @@
   padding: 0;
   box-sizing: border-box;
 
-  font-family: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
+  /* font-family: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif; */
   font-weight: normal;
 
   --top-bottom-margins: min(2%, 200px);
@@ -38,27 +38,33 @@ html{
   padding: 0.5rem;
 }
 
-.title{
-  line-height: 1em;
-  text-align: left;
+.titleIcon{
+  width: 33%;
+  min-width: 128px;
+  height: auto;
+  image-rendering: pixelated;
 
-  color: var(--pine-teal);
-  font-size: 5rem;
-  font-weight: 700;
-  text-shadow: 4px 4px var(--fern), 6px 6px var(--dust-grey);
+  margin-bottom: 1rem;
 }
 
 .todaysDate{
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.5rem;
+
   width: fit-content;
   text-align: right;
-  font-size: 1.25rem;
-  font-weight: bold;
   color: var(--hunter-green)
 }
 
 .loadedAt{
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
+
   text-align: right;
-  font-size: 1rem;
+  font-size: 1.25rem;
   color: var(--fern)
 }
 
@@ -79,8 +85,11 @@ html{
 }
 
 .filterText{
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.75rem;
   color: var(--pine-teal);
-  font-weight: bold;
 }
 
 .filterButton{
@@ -90,7 +99,11 @@ html{
 
   min-width: 50px;
 
-  font-weight: bold;
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 0.6rem;
+  /* font-weight: bold; */
   color: var(--hunter-green);
 
   margin-top: 0.5rem;
@@ -121,7 +134,6 @@ html{
   margin: 0 auto;
 
   border: 4px solid var(--pine-teal);
-  border-radius: 24px;
   background-color: var(--dust-grey);
 
   box-shadow: 4px 4px var(--fern);
@@ -149,9 +161,11 @@ html{
 
 .genreImage{
   margin-top: 0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   margin-left: auto;
   margin-right: auto;
+
+  image-rendering: pixelated;
 
   /* probably don't need this as all pictures are 32x32 */
   width: 32px;
@@ -159,6 +173,10 @@ html{
 }
 
 .articleTitle{
+  font-family: "Silkscreen", sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+
   text-align: center;
   text-wrap: balance;
 }
@@ -179,6 +197,10 @@ html{
 }
 
 .articleInfo{
+  font-family: "Silkscreen", sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+
   display: flex;
   justify-content: center;
   margin-left: 0.5rem;
@@ -196,6 +218,12 @@ html{
 }
 
 .articleContent{
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.5rem;
+  color: var(--fern);
+
   text-indent: 1rem;
   text-wrap: balance;
   text-align: center;

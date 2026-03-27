@@ -75,7 +75,6 @@ app.get('/api/articles', async (req, res) => {
 
         if(feed){
             feed.items.forEach(item => {
-                console.log(item)
                 const timestamp = new Date(item.pubDate || item.published || item.isoDate).getTime()
 
                 // dont push articles older than a week old
