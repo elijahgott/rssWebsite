@@ -69,9 +69,11 @@ html{
 }
 
 .loadingText{
-  color: var(--dry-sage);
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
   font-size: 2rem;
-  font-weight: bold;
+  color: var(--dry-sage);
   margin-top: 2rem;
 }
 
