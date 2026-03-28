@@ -37,7 +37,7 @@ const Article = ({article}) => {
     return(
         <div className="item">
             {image !== null ? (<img src={image} className="genreImage" />) : (null)}
-            <h2 className="articleTitle"><a href={article.url} target="_blank">{article.title}</a></h2>
+            <h2 className="title"><a href={article.url} target="_blank">{article.title}</a></h2>
             <div className="articleInfo">
                 <p className="authorName">{article.author}</p>
                 <p className="publishedDate">{getDate(article.published)}</p>

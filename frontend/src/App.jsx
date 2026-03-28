@@ -3,16 +3,26 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 const baseUrl = '/api/articles'
 
-import './App.css'
-
 import NavBar from './navBar'
 import Filter from './filterComponent'
 import Article from './articleComponent'
+import Feeds from './allFeedsComponent'
 
 function App() {
   const [data, setData] = useState([])
   const [genres, setGenres] = useState([])
   const [activeGenres, setActiveGenres] = useState([])
+
+  const [feeds, setFeeds] = useState([{
+        title: "ESPN - NBA",
+        url: "https://www.espn.com/espn/rss/nba/news",
+        genres: ['news', 'sports']
+    },
+    {
+        title: "YouTube - The Act Man",
+        url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCWRvdx9K5uKlnwZaiiWQO3w",
+        genres: ['youtube', 'gaming']
+    }])
 
   // get all items and data from backend
   useEffect(() => {
@@ -48,16 +58,21 @@ function App() {
   // filter articles based on selected filters
   const filteredData = activeGenres.length === 0 ? data : data.filter(item => item.genres.some(genre => activeGenres.includes(genre)))
 
+  // get all feeds from backend !!!
+
   return (
     <>
       <NavBar />
-      <div className="itemsContainer">
+      <div className="container items">
         <Filter genres={genres} activeGenres={activeGenres} toggleGenre={toggleGenre} />
         {filteredData.length === 0 ? (
           <h2 className='loadingText'>nothing to show...</h2>
         ) : (
           filteredData.map((item, index) => <Article article={item} key={index}/>)
         )}
+      </div>
+      <div className='container'>
+        <Feeds feeds={feeds} />
       </div>
     </>
   )
