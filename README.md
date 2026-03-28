@@ -5,6 +5,7 @@ I may eventually turn this into a more generalized personal website, similar to 
 ### Todo:
 - Implement ability to add RSS feeds via the frontend
     - would have to fetch RSS feeds list from DB
+- fetch all feeds (title, urls, genres) from backend for feeds section
 - make cool background
     - checkerboard animation that fades in and out?
 
