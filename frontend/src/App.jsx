@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 
 import axios from 'axios'
-const baseUrl = '/api/articles'
+const articlesUrl = '/api/articles'
+const feedsUrl = '/api/feeds'
 
 import NavBar from './navBar'
 import Filter from './filterComponent'
@@ -13,22 +14,13 @@ function App() {
   const [genres, setGenres] = useState([])
   const [activeGenres, setActiveGenres] = useState([])
 
-  const [feeds, setFeeds] = useState([{
-        title: "ESPN - NBA",
-        url: "https://www.espn.com/espn/rss/nba/news",
-        genres: ['news', 'sports']
-    },
-    {
-        title: "YouTube - The Act Man",
-        url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCWRvdx9K5uKlnwZaiiWQO3w",
-        genres: ['youtube', 'gaming']
-    }])
+  const [feeds, setFeeds] = useState([])
 
   // get all items and data from backend
   useEffect(() => {
     const getAll = async () => {
       try{
-        const res = await axios.get(baseUrl)
+        const res = await axios.get(articlesUrl)
         setData(res.data)
       }
       catch (e){
@@ -59,6 +51,45 @@ function App() {
   const filteredData = activeGenres.length === 0 ? data : data.filter(item => item.genres.some(genre => activeGenres.includes(genre)))
 
   // get all feeds from backend !!!
+  // get all items and data from backend
+  useEffect(() => {
+    const getAll = async () => {
+      try{
+        const res = await axios.get(feedsUrl)
+        setFeeds(res.data)
+      }
+      catch (e){
+        console.error('Error fetching feeds: ', e)
+      }
+    }
+    getAll()
+  }, [])
+
+  // gets image based on genre
+  const getGenreImage = (genres) => {
+    if(genres){
+        if(genres.includes('sports')){
+            return '/basketball.png'
+        }
+        else if(genres.includes('gaming')){
+            return '/gameController.png'
+        }
+        else if(genres.includes('finance')){
+            return '/money.png'
+        }
+        else if(genres.includes('right')){
+            return '/elephant.png'
+        }
+        else if(genres.includes('left')){
+            return '/donkey.png'
+        }
+        // after other types of news so specific types are picked first
+        else if(genres.includes('news')){
+            return '/book.png'
+        }
+    }
+    return null
+}
 
   return (
     <>
@@ -68,11 +99,11 @@ function App() {
         {filteredData.length === 0 ? (
           <h2 className='loadingText'>nothing to show...</h2>
         ) : (
-          filteredData.map((item, index) => <Article article={item} key={index}/>)
+          filteredData.map((item, index) => <Article article={item} getGenreImage={getGenreImage} key={index}/>)
         )}
       </div>
       <div className='container'>
-        <Feeds feeds={feeds} />
+        <Feeds feeds={feeds} getGenreImage={getGenreImage} />
       </div>
     </>
   )
