@@ -61,7 +61,10 @@ const isWithinWeek = (timestamp) => {
 
 // ------- API ------- //
 
-// get all sources?
+// get all sources / feeds
+app.get('/api/feeds', async (req, res) => {
+    res.json(rssFeedsList)
+})
 
 // get all articles
 app.get('/api/articles', async (req, res) => {
