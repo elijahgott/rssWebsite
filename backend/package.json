@@ -6,6 +6,7 @@
     "rss-parser": "^3.13.0"
   },
   "scripts": {
-    "dev": "node --watch index.js"
+    "dev": "node --watch index.js",
+    "start": "node index.js"
   }
 }
