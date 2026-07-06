@@ -77,11 +77,12 @@ app.get('/api/articles', async (req, res) => {
         const genres = unparsed.genres
 
         if(feed){
+            let count = 0
             feed.items.forEach(item => {
                 const timestamp = new Date(item.pubDate || item.published || item.isoDate).getTime()
 
                 // dont push articles older than a week old
-                if(isWithinWeek(timestamp)){
+                if(isWithinWeek(timestamp) && count < 10){
                     normalizedObj = {
                         title: item.title,
                         author: item.author || item.creator || "N/A",
@@ -91,6 +92,7 @@ app.get('/api/articles', async (req, res) => {
                         genres: genres || []
                     }
                     items.push(normalizedObj)
+                    count++
                 }
             })
         }
