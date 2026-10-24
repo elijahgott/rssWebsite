@@ -49,6 +49,51 @@ const rssFeedsList = [
         title: "YouTube - Alex Webb",
         url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCHmDySLF9yQVC1oTwZKWtSQ",
         genres: ['youtube', 'gaming']
+    },
+    {
+        title: "YouTube - Chrrism",
+        url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCBoPMDqg57i0dPLu3hrN9Hw",
+        genres: ['youtube', 'gaming']
+    },
+    {
+        title: "YouTube - Cold Ones",
+        url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCfbnTUxUech4P1XgYUwYuKA",
+        genres: ['youtube']
+    },
+    {
+        title: "YouTube - cscoopVEVO",
+        url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCFSnAipx-2xRlR-209Rz5cA",
+        genres: ['youtube', 'gaming']
+    },
+    {
+        title: "YouTube - docm77",
+        url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC4O9HKe9Jt5yAhKuNv3LXpQ",
+        genres: ['youtube', 'gaming']
+    },
+    {
+        title: "YouTube - KennyForReal",
+        url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC8xZt-P1j-G7ckm0LM2p6eQ",
+        genres: ['youtube', 'sports']
+    },
+    {
+        title: "YouTube - Keralis",
+        url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCcJgOennb0II4a_qi9OMkRA",
+        genres: ['youtube', 'gaming']
+    },
+    {
+        title: "YouTube - Mind Pulp",
+        url: "https://www.youtube.com/feeds/videos.xml?channel_id=UC_uuCO-tZMc73_qRvr46OFA",
+        genres: ['youtube', 'gaming']
+    },
+    {
+        title: "YouTube - Odyssey Central",
+        url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCMiOWDKN0wNKHQ4rzGAp6ig",
+        genres: ['youtube', 'gaming']
+    },
+    {
+        title: "YouTube - Replay Mode",
+        url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCBkl0KmpNuPjIKEkonYub9w",
+        genres: ['youtube', 'gaming']
     }
 ]
 
@@ -79,11 +124,12 @@ app.get('/api/articles', async (req, res) => {
         const genres = unparsed.genres
 
         if(feed){
+            let count = 0
             feed.items.forEach(item => {
                 const timestamp = new Date(item.pubDate || item.published || item.isoDate).getTime()
 
                 // dont push articles older than a week old
-                if(isWithinWeek(timestamp)){
+                if(isWithinWeek(timestamp) && count < 10){
                     normalizedObj = {
                         title: item.title,
                         author: item.author || item.creator || "N/A",
@@ -93,6 +139,7 @@ app.get('/api/articles', async (req, res) => {
                         genres: genres || []
                     }
                     items.push(normalizedObj)
+                    count++
                 }
             })
         }
