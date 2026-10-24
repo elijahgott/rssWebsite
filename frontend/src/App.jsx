@@ -68,7 +68,13 @@ function App() {
   // gets image based on genre
   const getGenreImage = (genres) => {
     if(genres){
-        if(genres.includes('sports')){
+        if(genres.includes('football')){
+            return '/football.png'
+        }
+        else if(genres.includes('baseball')){
+            return '/baseball.png'
+        }
+        else if(genres.includes('sports')){ // default for sports
             return '/basketball.png'
         }
         else if(genres.includes('gaming')){

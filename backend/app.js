@@ -28,17 +28,17 @@ const rssFeedsList = [
     {
         title: "ESPN - NBA",
         url: "https://www.espn.com/espn/rss/nba/news",
-        genres: ['news', 'sports']
+        genres: ['news', 'sports', 'basketball']
     },
     {
         title: "ESPN - NFL",
         url: "https://www.espn.com/espn/rss/nfl/news",
-        genres: ['news', 'sports']
+        genres: ['news', 'sports', 'football']
     },
     {
         title: "ESPN - MLB",
         url: "https://www.espn.com/espn/rss/mlb/news",
-        genres: ['news', 'sports']
+        genres: ['news', 'sports', 'baseball']
     },
     {
         title: "YouTube - The Act Man",
@@ -129,7 +129,6 @@ app.get('/api/articles', async (req, res) => {
     const items = []
 
     for(const unparsed of rssFeedsList){
-        console.log(unparsed)
         const feed = await rssParser.parseURL(unparsed.url)
         const genres = unparsed.genres
 
