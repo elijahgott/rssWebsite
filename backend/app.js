@@ -18,7 +18,7 @@ const rssFeedsList = [
     {
         title: 'BBC - World',
         url: 'https://feeds.bbci.co.uk/news/world/rss.xml',
-        genres: ['news', 'left']
+        genres: ['news', 'left', 'world']
     },
     {
         title: "Fox News - World",
@@ -28,6 +28,16 @@ const rssFeedsList = [
     {
         title: "ESPN - NBA",
         url: "https://www.espn.com/espn/rss/nba/news",
+        genres: ['news', 'sports']
+    },
+    {
+        title: "ESPN - NFL",
+        url: "https://www.espn.com/espn/rss/nfl/news",
+        genres: ['news', 'sports']
+    },
+    {
+        title: "ESPN - MLB",
+        url: "https://www.espn.com/espn/rss/mlb/news",
         genres: ['news', 'sports']
     },
     {
