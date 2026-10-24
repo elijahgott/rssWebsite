@@ -10,11 +10,11 @@ const RssParser = require('rss-parser')
 const rssParser = new RssParser
 
 const rssFeedsList = [
-    {
-        title: "Yahoo - Finance",
-        url: "https://finance.yahoo.com/news/rssindex",
-        genres: ['news', 'finance']
-    },
+    // { // link is down
+    //     title: "Yahoo - Finance",
+    //     url: "https://finance.yahoo.com/news/rssindex",
+    //     genres: ['news', 'finance']
+    // },
     {
         title: 'BBC - World',
         url: 'https://feeds.bbci.co.uk/news/world/rss.xml',
@@ -74,6 +74,7 @@ app.get('/api/articles', async (req, res) => {
     const items = []
 
     for(const unparsed of rssFeedsList){
+        console.log(unparsed)
         const feed = await rssParser.parseURL(unparsed.url)
         const genres = unparsed.genres
 
